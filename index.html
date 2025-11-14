@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ravi | Software Engineer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Pokeball Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="gaming.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="gaming.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="gaming.png">
+  </head>
+
+  <body>
+    <!-- Particle Canvas Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navigation with Glassmorphism -->
+    <nav class="glass-nav">
+      <div class="nav-container">
+        <div class="logo-container">
+          <a href="#home" class="logo">
+            <div class="pokeball-logo">
+              <svg
+                width="70"
+                height="70"
+                viewBox="0 0 50 50"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient
+                    id="redGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" style="stop-color: #ff1744" />
+                    <stop offset="100%" style="stop-color: #c40233" />
+                  </linearGradient>
+                  <radialGradient id="whiteGradient">
+                    <stop offset="0%" style="stop-color: #ffffff" />
+                    <stop offset="100%" style="stop-color: #e0e0e0" />
+                  </radialGradient>
+                </defs>
+
+                <!-- Top red half -->
+                <path
+                  d="M 25 5 A 20 20 0 0 1 45 25 L 5 25 A 20 20 0 0 1 25 5"
+                  fill="url(#redGradient)"
+                  stroke="#1a1a1a"
+                  stroke-width="2"
+                />
+
+                <!-- Bottom white half -->
+                <path
+                  d="M 5 25 A 20 20 0 0 0 25 45 A 20 20 0 0 0 45 25"
+                  fill="url(#whiteGradient)"
+                  stroke="#1a1a1a"
+                  stroke-width="2"
+                />
+
+                <!-- Middle black line -->
+                <line
+                  x1="5"
+                  y1="25"
+                  x2="45"
+                  y2="25"
+                  stroke="#1a1a1a"
+                  stroke-width="3"
+                />
+
+                <!-- Center circle (white) -->
+                <circle
+                  cx="25"
+                  cy="25"
+                  r="8"
+                  fill="white"
+                  stroke="#1a1a1a"
+                  stroke-width="2.5"
+                />
+
+                <!-- Center button (black) -->
+                <circle
+                  cx="25"
+                  cy="25"
+                  r="4"
+                  fill="#1a1a1a"
+                  stroke="#333"
+                  stroke-width="1"
+                />
+
+                <!-- Highlight effect -->
+                <ellipse
+                  cx="30"
+                  cy="15"
+                  rx="5"
+                  ry="3"
+                  fill="rgba(255,255,255,0.4)"
+                  opacity="0.7"
+                />
+              </svg>
+            </div>
+          </a>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <!-- ADD THIS THEME TOGGLE -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+        <button class="mobile-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section with 3D Card -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="title-wrapper">
+            <span class="greeting">👋 Hello, I'm</span>
+            <h1 class="glitch" data-text="Ravi Bhushan Prasad">
+              Ravi Bhushan Prasad
+            </h1>
+          </div>
+          <div class="typing-container">
+            <span class="typing-prefix">I build</span>
+            <span class="typing-text"></span>
+            <span class="cursor">|</span>
+          </div>
+          <p class="hero-description">
+            Software Engineer crafting scalable full-stack applications with
+            React, Node.js, and cutting-edge web technologies. Currently
+            engineering AI-driven solutions at Bounteous X Accolite.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item glass-card">
+              <span class="stat-number" data-target="20">0</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item glass-card">
+              <span class="stat-number" data-target="2">0</span>
+              <span class="stat-label">Years Exp</span>
+            </div>
+            <div class="stat-item glass-card">
+              <span class="stat-number" data-target="95">0</span>
+              <span class="stat-label">Test Coverage</span>
+            </div>
+          </div>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">
+              <span class="btn-text">Let's Connect</span>
+              <span class="btn-icon">→</span>
+            </a>
+            <a href="#projects" class="btn btn-glass">
+              <span class="btn-text">View Work</span>
+              <span class="btn-icon">↓</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="card-3d-wrapper">
+            <div class="card-3d">
+              <div class="card-front glass-card">
+                <div class="terminal-header">
+                  <div class="terminal-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                  </div>
+                  <span class="code-filename">developer.ts</span>
+                </div>
+                <div class="terminal-body">
+                  <pre class="code-snippet">
+<span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
+  <span class="code-property">name</span>: <span class="code-string">"Ravi"</span>,
+  <span class="code-property">role</span>: <span class="code-string">"Full Stack Dev"</span>,
+  <span class="code-property">stack</span>: [
+    <span class="code-string">"React"</span>,
+    <span class="code-string">"Angular"</span>,
+    <span class="code-string">"Node.js"</span>,
+    <span class="code-string">"PostgreSQL"</span>,
+    <span class="code-string">"MySQL"</span>,
+  ],
+  <span class="code-property">focus</span>: <span class="code-string">"AI Integration"</span>,
+  <span class="code-method">buildTheFuture</span>() {
+    <span class="code-keyword">return</span> <span class="code-string">"One prompt at a time"</span>;
+  }
+};
+<span class="code-comment">// Let's create magic! ✨</span>
+                                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section with Timeline -->
+    <section id="experience" class="section-experience">
+      <div class="section-header">
+        <span class="section-number">01.</span>
+        <h2 class="section-title">Professional Journey</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <div class="experience-header">
+              <div class="experience-title-group">
+                <h3 class="experience-role">Senior Software Engineer</h3>
+                <div class="experience-company">
+                  <span class="company-icon">🏢</span>
+                  Bounteous X Accolite • Salesloft
+                </div>
+              </div>
+              <div class="experience-period">Oct 2025 – Present</div>
+            </div>
+            <ul class="experience-list">
+              <li>
+                Own end-to-end delivery of
+                <span class="highlight">frontend features</span> and
+                <span class="highlight">backend APIs</span>
+                , consistently shipping high-quality enhancements
+              </li>
+              <li>
+                Architect and implement scalable backend services, optimizing
+                API response times by <span class="stat-highlight">30–40%</span>
+                through efficient database design, caching
+                <span class="highlight">(Redis)</span> , and query tuning
+                <span class="highlight">(PostgreSQL/Elasticsearch)</span>
+              </li>
+              <li>
+                Partner with engineering managers and architects to refine
+                <span class="highlight">system design</span>, estimate
+                complexity, and plan technical milestones
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tech-pill">React</span>
+              <span class="tech-pill">Node.js</span>
+              <span class="tech-pill">GraphQL</span>
+              <span class="tech-pill">Kubernetes</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">Redis</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <div class="experience-header">
+              <div class="experience-title-group">
+                <h3 class="experience-role">Software Engineer</h3>
+                <div class="experience-company">
+                  <span class="company-icon">🏢</span>
+                  Bounteous X Accolite • Salesloft
+                </div>
+              </div>
+              <div class="experience-period">Oct 2024 – Sep 2025</div>
+            </div>
+            <ul class="experience-list">
+              <li>
+                Built scalable UI components in
+                <span class="highlight">React</span> for real-time conversation
+                insights, improving user engagement by
+                <span class="stat-highlight">20%</span>
+              </li>
+              <li>
+                Developed backend services in
+                <span class="highlight">Node.js</span> with
+                <span class="highlight">GraphQL</span> APIs, reducing API
+                response time by <span class="stat-highlight">30–40%</span>
+              </li>
+              <li>
+                Deployed services using
+                <span class="highlight">Kubernetes</span> pods, ensuring high
+                availability and scalability
+              </li>
+              <li>
+                Implemented monitoring with
+                <span class="highlight">Sentry</span>,
+                <span class="highlight">Datadog</span>, and
+                <span class="highlight">Sumo Logic</span>, reducing incident
+                resolution time by <span class="stat-highlight">35%</span>
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tech-pill">React</span>
+              <span class="tech-pill">Node.js</span>
+              <span class="tech-pill">GraphQL</span>
+              <span class="tech-pill">Kubernetes</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">Redis</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <div class="experience-header">
+              <div class="experience-title-group">
+                <h3 class="experience-role">Software Engineer Intern</h3>
+                <div class="experience-company">
+                  <span class="company-icon">🏢</span>
+                  Bounteous X Accolite • Quest
+                </div>
+              </div>
+              <div class="experience-period">Mar 2024 – Oct 2024</div>
+            </div>
+            <ul class="experience-list">
+              <li>
+                Delivered modular UI components in
+                <span class="highlight">Angular</span>, reducing development
+                time by <span class="stat-highlight">25%</span>
+              </li>
+              <li>
+                Built end-to-end
+                <span class="highlight">Playwright</span> automation with
+                <span class="highlight">Generative AI</span> (LLaMA), cutting QA
+                effort by <span class="stat-highlight">40%</span>
+              </li>
+              <li>
+                Achieved <span class="stat-highlight">95%</span> test coverage
+                and lowered post-release defect rate by
+                <span class="stat-highlight">15%</span>
+              </li>
+            </ul>
+            <div class="tech-pills">
+              <span class="tech-pill">Angular</span>
+              <span class="tech-pill">Playwright</span>
+              <span class="tech-pill">LLaMA</span>
+              <span class="tech-pill">TypeScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section with Glass Cards -->
+    <section id="skills" class="section-skills">
+      <div class="section-header">
+        <span class="section-number">02.</span>
+        <h2 class="section-title">Technical Arsenal</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card glass-card" data-aos="zoom-in">
+          <div class="skill-icon">💻</div>
+          <h3 class="skill-category">Languages</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">TypeScript</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">C++</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">SQL</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="skill-card glass-card"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <div class="skill-icon">⚛️</div>
+          <h3 class="skill-category">Frameworks / Libraries</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">React</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Node.js</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 60%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Angular</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 62%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Express.js</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 55%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="skill-card glass-card"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
+          <div class="skill-icon">🛠️</div>
+          <h3 class="skill-category">DevOps & Tools</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <span class="skill-name">Git</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">GitHub</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Docker</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Kubernetes</span>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 60%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="skill-card glass-card"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
+          <div class="skill-icon">🧠</div>
+          <h3 class="skill-category">Core Concepts</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Data Structures</span>
+            <br />
+            <span class="skill-tag">Algorithms</span>
+            <br />
+            <span class="skill-tag">System Design</span>
+            <br />
+            <span class="skill-tag">Machine Learning</span>
+            <br />
+            <span class="skill-tag">API Design</span>
+            <br />
+            <span class="skill-tag">Microservices</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section with 3D Cards -->
+    <section id="projects" class="section-projects">
+      <div class="section-header">
+        <span class="section-number">03.</span>
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+      <div class="projects-container">
+        <div class="project-card-3d" data-aos="fade-right">
+          <div class="project-inner glass-card">
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">Job Portal Platform</h3>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/R-A-V-I-0-7"
+                    class="project-link"
+                    aria-label="GitHub"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://github.com/R-A-V-I-0-7"
+                    class="project-link"
+                    aria-label="External Link"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <p class="project-description">
+                A comprehensive recruitment platform featuring employer
+                management, intelligent job posting, and candidate evaluation
+                systems with role-based access control and enterprise-grade
+                security.
+              </p>
+              <ul class="project-highlights">
+                <li>
+                  Optimized SQL queries reducing page load by
+                  <span class="stat-highlight">35%</span>
+                </li>
+                <li>Implemented data encryption and RBAC</li>
+                <li>CI/CD pipeline with zero-downtime deployments</li>
+              </ul>
+              <div class="project-tech">
+                <span class="tech-badge">Angular</span>
+                <span class="tech-badge">.NET Core</span>
+                <span class="tech-badge">SQL Server</span>
+                <span class="tech-badge">IIS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card-3d" data-aos="fade-left">
+          <div class="project-inner glass-card">
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">SuperNotes App</h3>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/R-A-V-I-0-7/notes-app"
+                    target="_blank"
+                    class="project-link"
+                    aria-label="GitHub"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://github.com/R-A-V-I-0-7/notes-app"
+                    target="_blank"
+                    class="project-link"
+                    aria-label="External Link"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <p class="project-description">
+                Full-stack note-taking application with real-time
+                synchronization, drag-and-drop organization, and offline-first
+                architecture. Features include theming, categorization, and data
+                export capabilities.
+              </p>
+              <ul class="project-highlights">
+                <li>Real-time sync with Supabase backend</li>
+                <li>
+                  <span class="stat-highlight">100%</span> offline functionality
+                  with local storage
+                </li>
+                <li>Custom domain deployment on GitHub Pages</li>
+              </ul>
+              <div class="project-tech">
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Supabase</span>
+                <span class="tech-badge">Local Storage</span>
+                <span class="tech-badge">GitHub Pages</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section-education">
+      <div class="section-header">
+        <span class="section-number">04.</span>
+        <h2 class="section-title">Academic Background</h2>
+      </div>
+      <div class="education-grid">
+        <div class="education-card glass-card" data-aos="flip-left">
+          <div class="education-icon">🎓</div>
+          <div class="education-content">
+            <h3 class="education-degree">Master of Computer Applications</h3>
+            <h4 class="education-institution">University of Delhi</h4>
+            <p class="education-department">Department of Computer Science</p>
+            <div class="education-period">
+              <span class="period-icon">📅</span>
+              Aug 2021 – Aug 2024
+            </div>
+          </div>
+        </div>
+        <div
+          class="education-card glass-card"
+          data-aos="flip-left"
+          data-aos-delay="100"
+        >
+          <div class="education-icon">📚</div>
+          <div class="education-content">
+            <h3 class="education-degree">Bachelor of Science in Mathematics</h3>
+            <h4 class="education-institution">University of Delhi</h4>
+            <p class="education-department">Sri Venkateswara College</p>
+            <div class="education-period">
+              <span class="period-icon">📅</span>
+              Aug 2017 – July 2020
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-contact">
+      <div class="section-header">
+        <span class="section-number">05.</span>
+        <h2 class="section-title">Let's Build Together</h2>
+      </div>
+      <div class="contact-content">
+        <p class="contact-tagline">
+          Currently open to exciting opportunities and collaborations. Whether
+          you want to discuss a project, explore potential partnerships, or just
+          say hello – my inbox is always open!
+        </p>
+        <div class="contact-grid">
+          <a
+            href="mailto:ravi.mca21.du@gmail.com"
+            class="contact-card glass-card"
+          >
+            <div class="contact-icon">📧</div>
+            <h4>Email</h4>
+            <p>ravi.mca21.du@gmail.com</p>
+          </a>
+          <a
+            href="https://linkedin.com/in/ravi-bhushan-prasad"
+            target="_blank"
+            class="contact-card glass-card"
+          >
+            <div class="contact-icon">💼</div>
+            <h4>LinkedIn</h4>
+            <p>Connect with me</p>
+          </a>
+          <a
+            href="https://github.com/R-A-V-I-0-7"
+            target="_blank"
+            class="contact-card glass-card"
+          >
+            <div class="contact-icon">💻</div>
+            <h4>GitHub</h4>
+            <p>Check out my repos</p>
+          </a>
+          <a href="tel:+919953632431" class="contact-card glass-card">
+            <div class="contact-icon">📱</div>
+            <h4>Phone</h4>
+            <p>+91 9953632431</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-text">Designed & Built by Ravi Bhushan Prasad</p>
+        <p class="footer-year">© 2025 • Made with ❤️ and ☕</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
