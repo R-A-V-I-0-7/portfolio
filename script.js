@@ -228,7 +228,6 @@ const cardFront = document.querySelector('.card-front');
 const card3d = document.querySelector('.card-3d');
 
 if (cardFront && card3d) {
-    console.log('✅ Terminal card initialized');
     
     // 3D Tilt Effect on Mouse Move
     cardFront.addEventListener('mousemove', (e) => {
@@ -310,8 +309,6 @@ terminalStyles.textContent = `
     }
 `;
 document.head.appendChild(terminalStyles);
-
-console.log('🚀 Terminal animations loaded');
 
 
 // ===== Mobile Menu Toggle =====
@@ -443,6 +440,4 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 // Call on load
 detectSystemTheme();
 
-
-console.log('%c🚀 Portfolio Loaded Successfully!', 'color: #6366f1; font-size: 20px; font-weight: bold;');
-console.log('%cBuilt with ❤️ by Ravi Bhushan Prasad', 'color: #ec4899; font-size: 14px;');
+console.log('%cBuilt with ❤️ by Ravi', 'color: #ec4899; font-size: 14px;');
