@@ -318,6 +318,16 @@ const navMenu = document.querySelector('.nav-menu');
 if (mobileToggle) {
     mobileToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
+        mobileToggle.classList.toggle('active');
+    });
+    
+    // Close menu when a nav link is clicked
+    const navLinks = navMenu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
+        });
     });
 }
 
