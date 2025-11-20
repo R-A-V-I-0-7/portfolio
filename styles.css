@@ -1471,14 +1471,6 @@ section {
     font-size: 0.9rem;
 }
 
-.footer-counter {
-    font-family: monospace;
-    color: #8b5cf6;
-    margin-top: 0.5em;
-    font-size: 1rem;
-    letter-spacing: 1px;
-}
-
 
 /* ===== Responsive Design ===== */
 @media (max-width: 968px) {

@@ -451,15 +451,3 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 detectSystemTheme();
 
 console.log('%cBuilt with ❤️ by Ravi', 'color: #ec4899; font-size: 14px;');
-
-// ===== Global Visit Counter =====
-fetch('https://api.countapi.xyz/update/ravi-portfolio/globalvisits/?amount=1')
-    .then(res => res.json())
-    .then(data => {
-        const counter = document.getElementById('visit-count');
-        if (counter) counter.textContent = data.value;
-    })
-    .catch(() => {
-        const counter = document.getElementById('visit-count');
-        if (counter) counter.textContent = 'N/A';
-    });
