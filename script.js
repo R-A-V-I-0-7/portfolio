@@ -97,7 +97,7 @@ let isDeleting = false;
 
 function type() {
     const currentPhrase = phrases[phraseIndex];
-    
+
     if (isDeleting) {
         typingText.textContent = currentPhrase.substring(0, charIndex - 1);
         charIndex--;
@@ -174,7 +174,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
 fadeElements.forEach(el => {
     el.style.opacity = '0';
     const animType = el.getAttribute('data-aos');
-    
+
     if (animType === 'fade-up') {
         el.style.transform = 'translateY(30px)';
     } else if (animType === 'fade-right') {
@@ -186,13 +186,13 @@ fadeElements.forEach(el => {
     } else if (animType === 'flip-left') {
         el.style.transform = 'rotateY(-15deg)';
     }
-    
+
     el.style.transition = 'all 0.8s ease';
     const delay = el.getAttribute('data-aos-delay');
     if (delay) {
         el.style.transitionDelay = delay + 'ms';
     }
-    
+
     fadeObserver.observe(el);
 });
 
@@ -202,7 +202,7 @@ const navLinks = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -228,20 +228,20 @@ const cardFront = document.querySelector('.card-front');
 const card3d = document.querySelector('.card-3d');
 
 if (cardFront && card3d) {
-    
+
     // 3D Tilt Effect on Mouse Move
     cardFront.addEventListener('mousemove', (e) => {
         const rect = cardFront.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        
+
         // Calculate rotation (reduced values for subtle effect)
         const rotateX = (y - centerY) / 20;
         const rotateY = (centerX - x) / 20;
-        
+
         card3d.style.transform = `
             perspective(1500px) 
             rotateX(${rotateX}deg) 
@@ -256,13 +256,13 @@ if (cardFront && card3d) {
 
     // Interactive Dots with Ripple Effect
     const dots = document.querySelectorAll('.terminal-dots .dot');
-    
+
     dots.forEach(dot => {
         dot.addEventListener('click', (e) => {
             // Create ripple
             const ripple = document.createElement('span');
             const dotColor = window.getComputedStyle(dot).backgroundColor;
-            
+
             ripple.style.cssText = `
                 position: absolute;
                 width: 30px;
@@ -273,15 +273,15 @@ if (cardFront && card3d) {
                 pointer-events: none;
                 animation: ripple-effect 0.6s ease-out;
             `;
-            
+
             ripple.style.left = (e.offsetX - 15) + 'px';
             ripple.style.top = (e.offsetY - 15) + 'px';
-            
+
             dot.parentElement.style.position = 'relative';
             dot.parentElement.appendChild(ripple);
-            
+
             setTimeout(() => ripple.remove(), 600);
-            
+
             // Add bounce animation to dot
             dot.style.animation = 'none';
             setTimeout(() => {
@@ -320,7 +320,7 @@ if (mobileToggle) {
         navMenu.classList.toggle('active');
         mobileToggle.classList.toggle('active');
     });
-    
+
     // Close menu when a nav link is clicked
     const navLinks = navMenu.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
@@ -353,7 +353,7 @@ const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            
+
             // Animate all progress bars in this card
             const progressBars = entry.target.querySelectorAll('.skill-progress');
             progressBars.forEach(bar => {
@@ -365,7 +365,7 @@ const skillObserver = new IntersectionObserver((entries) => {
                     bar.style.width = width;
                 }, 100);
             });
-            
+
             skillObserver.unobserve(entry.target);
         }
     });
@@ -395,7 +395,7 @@ function initTheme() {
 function updateThemeToggle(theme) {
     const sunIcon = themeToggle.querySelector('.sun-icon');
     const moonIcon = themeToggle.querySelector('.moon-icon');
-    
+
     if (theme === 'light') {
         sunIcon.style.opacity = '1';
         sunIcon.style.transform = 'rotate(0deg) scale(1)';
@@ -413,11 +413,11 @@ function updateThemeToggle(theme) {
 function toggleTheme() {
     const currentTheme = htmlElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
+
     htmlElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeToggle(newTheme);
-    
+
     // Optional: Add a subtle animation to the whole page
     document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
 }
@@ -451,3 +451,15 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 detectSystemTheme();
 
 console.log('%cBuilt with ❤️ by Ravi', 'color: #ec4899; font-size: 14px;');
+
+// ===== Global Visit Counter =====
+fetch('https://api.countapi.xyz/update/ravi-portfolio/globalvisits/?amount=1')
+    .then(res => res.json())
+    .then(data => {
+        const counter = document.getElementById('visit-count');
+        if (counter) counter.textContent = data.value;
+    })
+    .catch(() => {
+        const counter = document.getElementById('visit-count');
+        if (counter) counter.textContent = 'N/A';
+    });
