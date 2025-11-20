@@ -180,7 +180,6 @@ body {
 }
 
 [data-theme="light"] .nav-menu {
-    background: transparent;
     border-bottom-color: rgba(99, 102, 241, 0.15);
 }
 
@@ -401,6 +400,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2.5rem;
+    background: transparent;
 }
 
 .nav-link {
@@ -1511,7 +1511,7 @@ section {
         left: 0;
         right: 0;
         flex-direction: column;
-        background: transparent;
+        background: var(--bg-dark);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(99, 102, 241, 0.1);
@@ -1524,12 +1524,18 @@ section {
         opacity: 0;
         visibility: hidden;
         margin-top: 0;
+        align-items: center;
+        text-align: center;
     }
 
     .nav-menu.active {
         max-height: 500px;
         opacity: 1;
         visibility: visible;
+    }
+
+    [data-theme="light"] .nav-menu {
+        background: var(--bg-dark);
     }
 
     .nav-controls {
